@@ -2,6 +2,7 @@
 # Base de dados - Curso R ------------------------------------------------------------------------------------------------------------------
 # Autoria do script: Jeanne Franco ---------------------------------------------------------------------------------------------------------
 # Data: 02/07/22 ---------------------------------------------------------------------------------------------------------------------------
+# Referência: https://blog.curso-r.com/posts/2022-06-11-bases-de-dados/ --------------------------------------------------------------------
 
 # Baixar pacote ----------------------------------------------------------------------------------------------------------------------------
 
@@ -28,3 +29,24 @@ pok <- pokemon %>%
                               "lutador", "psíquico", "água"))
 
 View(pok)
+
+library(ggplot2)
+
+ggplot(pok, aes(x = tipo_1, y = altura)) +
+  geom_boxplot()
+
+ggplot(pok, aes(x = tipo_1, y = peso)) +
+  geom_boxplot()
+
+library(dplyr)
+
+pok1 <- pok %>%
+  group_by(tipo_1) %>%
+  summarise(media_alt = mean(altura), media_peso = mean(peso))
+
+ggplot(pok1, aes(x = tipo_1, y = media_alt)) +
+  geom_col()
+
+ggplot(pok1, aes(x = tipo_1, y = media_peso)) +
+  geom_col()
+
