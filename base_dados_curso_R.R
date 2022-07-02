@@ -16,4 +16,15 @@ basesCursoR::bases_disponiveis()
 
 pokemon <- basesCursoR::pegar_base("pokemon")
 dplyr::glimpse(pokemon)
+View(pokemon)
 
+# Análises ---------------------------------------------------------------------------------------------------------------------------------
+
+library(magrittr)
+
+pok <- pokemon %>%
+  dplyr::select(altura, peso, tipo_1) %>%
+  dplyr::filter(tipo_1 %in% c("grama", "inseto", "terrestre", "elétrico",
+                              "lutador", "psíquico", "água"))
+
+View(pok)
