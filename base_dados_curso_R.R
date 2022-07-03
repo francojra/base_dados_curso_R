@@ -60,7 +60,25 @@ pok2 <- pok %>%
 ggplot(pok2, aes(x = tipo_1, y = media_alt)) +
   geom_col() +
   geom_errorbar(aes(x = tipo_1, y = media_alt,
-                    ymax = media_alt + se_alt, ymin = media_alt - se_alt))
+                    ymax = media_alt + se_alt, ymin = media_alt - se_alt),
+                    width = 0.2)
 
 ggplot(pok2, aes(x = tipo_1, y = media_peso)) +
-  geom_col()
+  geom_col() +
+  geom_errorbar(aes(x = tipo_1, y = media_peso,
+                    ymax = media_peso + se_peso, ymin = media_peso - se_peso),
+                    width = 0.2)
+
+library(forcats)
+
+ggplot(pok2, aes(x = fct_reorder(tipo_1, media_alt), y = media_alt)) +
+  geom_col() +
+  geom_errorbar(aes(x = tipo_1, y = media_alt,
+                    ymax = media_alt + se_alt, ymin = media_alt - se_alt),
+                    width = 0.2)
+
+ggplot(pok2, aes(x = fct_reorder(tipo_1, media_peso), y = media_peso)) +
+  geom_col() +
+  geom_errorbar(aes(x = tipo_1, y = media_peso,
+                    ymax = media_peso + se_peso, ymin = media_peso - se_peso),
+                    width = 0.2)
