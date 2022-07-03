@@ -50,3 +50,17 @@ ggplot(pok1, aes(x = tipo_1, y = media_alt)) +
 ggplot(pok1, aes(x = tipo_1, y = media_peso)) +
   geom_col()
 
+pok2 <- pok %>%
+  group_by(tipo_1) %>%
+  summarise(media_alt = mean(altura), media_peso = mean(peso),
+            sd_alt = sd(altura), sd_peso = sd(peso),
+            n_alt = n(), se_alt = sd_alt / sqrt(n_alt),
+            n_peso = n(), se_peso = sd_peso / sqrt(n_peso))
+
+ggplot(pok2, aes(x = tipo_1, y = media_alt)) +
+  geom_col() +
+  geom_errorbar(aes(x = tipo_1, y = media_alt,
+                    ymax = media_alt + se_alt, ymin = media_alt - se_alt))
+
+ggplot(pok2, aes(x = tipo_1, y = media_peso)) +
+  geom_col()
