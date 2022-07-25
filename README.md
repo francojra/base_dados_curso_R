@@ -5,7 +5,7 @@
 #### Data: 02/07/22 
 #### Referência: https://blog.curso-r.com/posts/2022-06-11-bases-de-dados/ 
 
-## Etapas do script:
+## Tópicos do script
 
 1. Baixar pacote;
 2. Identificar bases disponíveis;
